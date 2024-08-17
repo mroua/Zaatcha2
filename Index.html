@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First model Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <link rel="stylesheet" href="style/css/style.css"/>
+</head>
+<body class="text-white overflow-x-hidden">
+
+<!-- header -->
+<header class="shadow-lg text-gray-800 w-screen">
+    <nav class="hidden sm:block">
+        <div class="container mx-auto max-w-7xl">
+            <!-- First Row -->
+            <div class="flex justify-between items-center h-28">
+                <!-- Logo -->
+                <div class="flex-shrink-0 mr-6">
+                    <img class="h-16" src="style/images/Asset%201@4x.png" alt="Logo">
+                </div>
+                <!-- Phone & Address -->
+                <div class="hidden md:flex space-x-4">
+                    <p class="text-sm">Phone: +1234567890</p>
+                    <p class="text-sm">Address: 123 Street, City</p>
+                </div>
+            </div>
+        </div>
+        <!-- Second Row -->
+        <div class="primary_col py-4">
+            <div class="container mx-auto max-w-7xl flex justify-between items-center">
+                <!-- Menu -->
+                <div class="hidden sm:flex sm:space-x-4">
+                    <a href="#Home" class="nav-link text-white">Qui sommes nous ?</a>
+                    <a href="#Information" class="nav-link text-white">A propos</a>
+                    <a href="#Services" class="nav-link text-white">Services</a>
+                    <a href="#B2B" class="nav-link text-white">Offres</a>
+                    <a href="#Responsable" class="nav-link text-white">Représentants</a>
+                    <a href="#Clients" class="nav-link text-white">Clients</a>
+                    <a href="#map" class="nav-link text-white">Contact</a>
+                </div>
+                <!-- Social Links -->
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="text-white hover:text-gray-400 mx-2">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-gray-400 mx-2">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-gray-400 mx-2">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="fixed bg-white top-0 w-full h-32 z-50 flex justify-between items-center px-4 shadow-lg sm:hidden" style="z-index: 1000;">
+        <div>
+            <button id="menu-toggle"
+                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200
+                transition duration-150 ease-in-out">
+                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+        <div><img class="h-14 mx-auto" src="style/images/Asset%201@4x.png" alt="Logo"></div>
+        <div>
+            <button id="menu-toggle-sub"
+                    class="inline-flex items-center justify-center p-2 rounded-md text-gray-800 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 transition duration-150 ease-in-out">
+                <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M12 6h.01M12 12h.01M12 18h.01"></path>
+                </svg>
+
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Responsive Menu -->
+<div id="menu"
+     class="bg-white shadow-lg fixed bg-white top-0 left-0 bottom-0 w-80 px-4 py-20 space-y-1"style="z-index: 2500;">
+    <div class="flex justify-center">
+        <a href="#" class="text-gray-800 hover:text-gray-600 mx-2">
+            <i class="bi bi-facebook text-4xl"></i>
+        </a>
+        <a href="#" class="text-gray-800 hover:text-gray-600 mx-2">
+            <i class="bi bi-instagram text-4xl"></i>
+        </a>
+        <a href="#" class="text-gray-800 hover:text-gray-600 mx-2">
+            <i class="bi bi-linkedin text-4xl"></i>
+        </a>
+    </div>
+    <hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700">
+
+    <!-- Menu Items -->
+    <div class="py-8">
+
+        <a href="#Home" class="block px-3 py-2 text-gray-800 hover:bg-gray-200 rounded-md nav-link text-xl">Qui
+            sommes nous ?</a>
+        <a href="#Information"
+           class="block px-3 py-2 text-gray-800 hover:bg-gray-200 rounded-md nav-link text-xl">A propos</a>
+        <a href="#Services"
+           class="block px-3 py-2 text-gray-800 hover:bg-gray-200 rounded-md nav-link text-xl">Services</a>
+        <a href="#B2B" class="block px-3 py-2 text-gray-800 hover:bg-gray-200 rounded-md nav-link text-xl">Offres</a>
+        <a href="#Responsable" class="block px-3 py-2 text-gray-800 hover:bg-gray-200 rounded-md nav-link text-xl">Représentants</a>
+        <a href="#Clients"
+           class="block px-3 py-2 text-gray-800 hover:bg-gray-200 rounded-md nav-link text-xl">Clients</a>
+
+        <a href="#Clients"
+           class="block px-3 py-2 text-gray-800 hover:bg-gray-200 rounded-md nav-link text-xl">Clients</a>
+        <a href="#map"
+           class="block px-3 py-2 text-gray-800 hover:bg-gray-200 rounded-md nav-link text-xl">Contact</a>
+    </div>
+
+</div>
+
+<div id="menu-info" class="bg-white shadow-lg fixed bg-white top-0 right-0 h-80 w-72 px-4 py-20 space-y-1 text-gray-800" style="z-index: 2500;">
+    <div class="text-xl flex break-words">
+        <i class="bi bi-telephone mr-2"></i>
+        <p class="break-words">+1234567890</p>
+    </div>
+    <div class="text-xl flex break-words">
+        <i class="bi bi-envelope-at mr-2"></i>
+        <p class="break-words">contact@test.com</p>
+    </div>
+    <div class="text-xl flex break-words">
+        <i class="bi bi-geo-alt mr-2"></i>
+        <p class="break-words">coop les communeaux Villa N 40 Kouba Alger , Kouba, Algeria</p>
+    </div>
+</div>
+
+<!-- Slider -->
+<div id="Home" class="carousel w-screen">
+    <div class="carousel-inner flex">
+        <!-- Slide 1 -->
+        <div class="carousel-item bg-gray-200 relative">
+            <img src="style/images/slider1.jpg" alt="Slide 1">
+            <div class="overlay"></div>
+            <div class="carousel-item-content z-20">
+                <p class="text-sm  tracking-wider mb-4">Vivez l'Expérience des Plus Belles Destinations avec
+                    Notre Agence de Voyage</p>
+                <h1 class="text-xl md:text-6xl tracking-normal mb-8"><span>À la Découverte <b>du Monde</b></span></h1>
+                <button class="gradient-underline text-white font-bold bg-transparent border-none text-xl">
+                    Explore Now
+                </button>
+            </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item bg-gray-200 relative">
+            <img src="style/images/slider2.jpg" alt="Slide 2">
+            <div class="overlay"></div>
+            <div class="carousel-item-content">
+                <p class="text-sm text-lg tracking-wider mb-4">Nos experts en voyage professionnels à votre service</p>
+                <h1 class="text-xl md:text-6xl tracking-normal mb-8">
+                    <span>Confiez-nous vos <b>Rêves de Voyage</b></span></h1>
+                <button class="gradient-underline text-white font-bold bg-transparent border-none text-xl">
+                    Explore Now
+                </button>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item bg-gray-200 relative">
+            <img src="style/images/slider3.jpg" alt="Slide 3">
+            <div class="overlay"></div>
+            <div class="carousel-item-content">
+                <p class="text-sm text-lg tracking-wider mb-4">Créez votre itinéraire sur mesure avec nos experts</p>
+                <h1 class="text-xl md:text-6xl tracking-normal mb-8"><span>Imaginez Votre <b>Propre Aventure</b></span>
+                </h1>
+                <button class="gradient-underline text-white font-bold bg-transparent border-none text-xl">
+                    Explore Now
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Next and Previous buttons -->
+    <div class="carousel-control carousel-control-prev">
+        <i class="bi bi-chevron-left hidden sm:block"></i>
+    </div>
+    <div class="carousel-control carousel-control-next">
+        <i class="bi bi-chevron-right hidden sm:block"></i>
+    </div>
+    <div class="absolute parallelogram h-6 bg-white w-full z-20">
+    </div>
+</div>
+
+<!-- Search bar -->
+<div class="searchbar w-screen flex justify-center">
+    <!-- Normal Mode Form -->
+<div class="hidden md:block w-4/6">
+    <div class="flex">
+        <div class="flex items-center space-x-2 bg-white px-4 rounded-tl-lg">
+            <input type="radio" name="trip_type" id="round_trip" checked class="form-radio">
+            <label for="round_trip" class="text-gray-700">Round trip</label>
+        </div>
+        <div class="flex items-center space-x-2 bg-white p-4 rounded-tr-lg">
+            <input type="radio" name="trip_type" id="one_way" class="form-radio">
+            <label for="one_way" class="text-gray-700">One way</label>
+        </div>
+    </div>
+
+    <div class="bg-white flex px-4 py-8 w-full gap-2 rounded-tr-lg  rounded-b-lg shadow-lg">
+        <div class="bg-gray-100 flex rounded-md px-2">
+            <img src="style/images/ferry-boat.png" class="h-12 mt-2">
+            <div class="flex flex-col space-x-2 p-2">
+                <label class="block text-gray-700 ml-2 mb-1">Origin</label>
+                <input type="text" placeholder="Indicate origin"
+                       class="bg-transparent text-gray-500 outline-none w-28">
+            </div>
+        </div>
+        <div class="bg-gray-100 flex justify-center rounded-md px-2">
+            <img src="style/images/ferry-boat.png" class="h-12 mt-2 flip-x">
+            <div class="flex flex-col space-x-2 p-2">
+                <label class="block text-gray-700 ml-2 mb-1">Destination</label>
+                <input type="text" placeholder="Indicate origin"
+                       class="bg-transparent text-gray-500 outline-none w-28">
+            </div>
+        </div>
+        <div class="bg-gray-100 flex rounded-md px-2">
+            <img src="style/images/calendar.png" class="h-10 mt-3 flip-x">
+            <div class="flex flex-col space-x-2 p-2">
+                <label class="block text-gray-700 ml-2 mb-1">Dates</label>
+                <input type="text" placeholder="dates"
+                       class="bg-transparent text-gray-500 outline-none w-28">
+            </div>
+        </div>
+        <div class="bg-gray-100 flex justify-center items-center rounded-md pr-2 pl-4">
+            <img src="style/images/user.png" class="h-8 flip-x">
+            <div class="flex flex-col space-x-2 p-2">
+                <label class="block text-gray-700 ml-2 mb-1">Passengers</label>
+                <input type="text" placeholder="1"
+                       class="bg-transparent text-gray-500 outline-none w-28">
+            </div>
+        </div>
+        <div class="bg-gray-100 flex rounded-md px-2">
+            <img src="style/images/track.png" class="h-10 mt-3 flip-x">
+            <div class="flex flex-col space-x-2 p-2">
+                <label class="block text-gray-700 ml-2 mb-1">Pets</label>
+                <input type="text" placeholder="0"
+                       class="bg-transparent text-gray-500 outline-none w-28">
+            </div>
+        </div>
+        <div class="bg-gray-100 flex rounded-md px-2">
+            <img src="style/images/car.png" class="h-12 mt-3">
+            <div class="flex flex-col space-x-2 p-2">
+                <label class="block text-gray-700 ml-2 mb-1">Vehicle</label>
+                <input type="text" placeholder="0"
+                       class="bg-transparent text-gray-500 outline-none w-28">
+            </div>
+        </div>
+        <!--<div class="bg-gray-100 rounded-md">
+            <span class="text-pink-500"><i class="fas fa-train"></i></span>
+            <input type="text" placeholder="Indicate destination"
+                   class="bg-transparent text-gray-500 outline-none w-full">
+        </div>
+        <div class="bg-gray-100 rounded-md">
+            <span class="text-pink-500"><i class="fas fa-calendar-alt"></i></span>
+            <input type="text" placeholder="Select the dates" class="bg-transparent text-gray-500 outline-none w-full">
+        </div>
+        <div class="bg-gray-100 rounded-md">
+            <span class="text-pink-500"><i class="fas fa-user"></i></span>
+            <input type="text" placeholder="1 passenger" class="bg-transparent text-gray-500 outline-none w-full">
+        </div>
+        <div class="bg-gray-100 rounded-md">
+            <span class="text-pink-500"><i class="fas fa-paw"></i></span>
+            <input type="text" placeholder="Add pets" class="bg-transparent text-gray-500 outline-none w-full">
+        </div>
+        <div class="bg-gray-100 rounded-md">
+            <span class="text-pink-500"><i class="fas fa-car"></i></span>
+            <input type="text" placeholder="Select a vehicle" class="bg-transparent text-gray-500 outline-none w-full">
+        </div>-->
+        <button id="search-btn"
+                class="bg-red-500 w-32 h-12 text-white rounded-md py-2 px-4 mt-2 hover:bg-red-600 focus:outline-none">
+            Search
+        </button>
+    </div>
+</div>
+
+
+<!-- Responsive Mode Form -->
+<div class="bg-white text-gray-800 shadow-lg rounded-lg p-4 flex items-center justify-between space-x-2 md:hidden mt-4">
+    <div class="flex items-center space-x-2">
+        <span class="text-pink-500"><i class="fas fa-train"></i></span>
+        <span>Book a ferry trip</span>
+    </div>
+    <button id="responsive-search-btn"
+            class="bg-red-500 text-white rounded-full p-2 hover:bg-red-600 focus:outline-none">
+        <i class="fas fa-search"></i>
+    </button>
+</div>
+</div>
+
+
+<!-- Form Popup (Hidden by default) -->
+<div class="form-popup hidden fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75" style="z-index:200">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-11/12 max-w-lg">
+        <!-- Include the normal mode form fields here -->
+        <div class="flex flex-col space-y-4">
+            <div class="flex items-center space-x-2">
+                <span class="text-pink-500"><i class="fas fa-train"></i></span>
+                <input type="text" placeholder="Indicate origin" class="w-full bg-gray-100 p-2 rounded-md outline-none">
+            </div>
+            <div class="flex items-center space-x-2">
+                <span class="text-pink-500"><i class="fas fa-train"></i></span>
+                <input type="text" placeholder="Indicate destination"
+                       class="w-full bg-gray-100 p-2 rounded-md outline-none">
+            </div>
+            <div class="flex items-center space-x-2">
+                <span class="text-pink-500"><i class="fas fa-calendar-alt"></i></span>
+                <input type="text" placeholder="Select the dates"
+                       class="w-full bg-gray-100 p-2 rounded-md outline-none">
+            </div>
+            <div class="flex items-center space-x-2">
+                <span class="text-pink-500"><i class="fas fa-user"></i></span>
+                <input type="text" placeholder="1 passenger" class="w-full bg-gray-100 p-2 rounded-md outline-none">
+            </div>
+            <div class="flex items-center space-x-2">
+                <span class="text-pink-500"><i class="fas fa-paw"></i></span>
+                <input type="text" placeholder="Add pets" class="w-full bg-gray-100 p-2 rounded-md outline-none">
+            </div>
+            <div class="flex items-center space-x-2">
+                <span class="text-pink-500"><i class="fas fa-car"></i></span>
+                <input type="text" placeholder="Select a vehicle"
+                       class="w-full bg-gray-100 p-2 rounded-md outline-none">
+            </div>
+        </div>
+        <!-- Close button -->
+        <button class="text-red-500 mt-4 w-full bg-white rounded-md p-2 hover:bg-red-100 focus:outline-none"
+                onclick="$('.form-popup').addClass('hidden')">
+            Close
+        </button>
+    </div>
+</div>
+<!-- CEO small  -->
+<div class="w-screen bg-white">
+    <div class="max-w-6xl mx-auto pb-16 pt-24 md:py-24">
+        <!-- Left Side -->
+        <div class="flex flex-wrap">
+            <div class="w-full md:w-2/5 text-black px-4 md:px-0">
+                <h2 class="text-4xl font-bold mb-2">Providing a large fleet of Boats for a perfect and dreamy
+                    experience</h2>
+                <p class="text-gray-700 mb-8 text-sm">Eorem ipsum dolor sit amet, consectetur adipisicing elit sed
+                    eiusmod
+                    tempor
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    aliquip ex ea commodo consequat. Duis aute irure.</p>
+                <div class="text-sm">
+                    <i class="bi bi-arrow-right mr-2"></i><span class="mr-4">Stunning Cruise Paths You Follow</span>
+                </div>
+                <div class="text-sm">
+                    <i class="bi bi-arrow-right mr-2"></i><span class="mr-4">Premium Boats & Yachts</span>
+                </div>
+                <div class="text-sm">
+                    <i class="bi bi-arrow-right mr-2"></i><span class="mr-4">Our Professional Approach</span>
+                </div>
+                <div class="text-sm">
+                    <i class="bi bi-arrow-right mr-2"></i><span class="mr-4">Quality Service Guaranteed</span>
+                </div>
+                <p class="text-gray-800 font-semibold mt-8 GreyQo-Regular text-6xl px-4">John Doe</p>
+                <p class="text-gray-600 px-4 text-sm">CEO, Jane Smith</p>
+            </div>
+
+
+            <!-- Right Side -->
+            <div class="w-full md:w-3/5 flex items-center justify-center">
+                <img src="style/images/2356456.png" alt="Image Description" class="h-full ">
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<!--three offers-->
+<div class="w-screen offersList">
+    <div class="container mx-auto flex flex-col md:flex-row justify-center items-center md:space-x-8">
+        <!-- First Item -->
+        <div class="flex items-start max-w-xs mb-4 md:mb-0">
+            <!-- Icon -->
+            <div class="md:mr-4 mb-2 md:mb-0 mr-4 md:mr-0">
+                <img src="style/images/wheel.png" alt="Icon 1" class="w-48"/>
+            </div>
+            <!-- Textual Content -->
+            <div>
+                <h3 class="text-lg font-bold mb-2 text-gray-700">Priceless Experience</h3>
+                <hr class="border-t-2 border-gray-200 w-12 mb-4">
+                <p class="text-gray-600 text-sm">Asmod tempor incididunt labore magna ust enim sed veniams quis nostrud
+                    sed commodo ipsum duals.</p>
+            </div>
+        </div>
+
+        <!-- Second Item -->
+        <div class="flex items-start max-w-xs mb-4 md:mb-0">
+            <!-- Icon -->
+            <div class="md:mr-4 mb-2 md:mb-0 mr-4 md:mr-0">
+                <img src="style/images/snorkel.png" alt="Icon 2" class="w-48"/>
+            </div>
+            <!-- Textual Content -->
+            <div>
+                <h3 class="text-lg font-bold mb-2 text-gray-700">Custom Packages</h3>
+                <hr class="border-t-2 border-gray-200 w-12 mb-4">
+                <p class="text-gray-600 text-sm">Asmod tempor incididunt labore magna ust enim sed veniams quis nostrud
+                    sed commodo ipsum duals.</p>
+            </div>
+        </div>
+
+        <!-- Third Item -->
+        <div class="flex items-start max-w-xs mb-4 md:mb-0">
+            <!-- Icon -->
+            <div class="md:mr-4 mb-2 md:mb-0 mr-4 md:mr-0">
+                <img src="style/images/sailor-hat.png" alt="Icon 3" class="w-48"/>
+            </div>
+            <!-- Textual Content -->
+            <div>
+                <h3 class="text-lg font-bold mb-2 text-gray-700">Peoples Oriented</h3>
+                <hr class="border-t-2 border-gray-200 w-12 mb-4">
+                <p class="text-gray-600 text-sm">Asmod tempor incididunt labore magna ust enim sed veniams quis nostrud
+                    sed commodo ipsum duals.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- striangle div -->
+<div class="relative mt-16 overflow-hidden w-screen">
+    <div class="absolute parallelogram2 h-6 bg-white w-full"></div>
+
+    <div class="bg-cover bg-center h-96 flex flex-col justify-center items-center"
+         style="background-image: url('style/images/b02.jpg');">
+        <h2 class="text-white text-4xl font-bold mb-8 mt-12">Fleet of Luxury Boats</h2>
+        <p class="w-full px-4 md:w-1/3 md:px-0 text-white text-center text-base">Dolore magna aliqua enim ad minim veniam, quis nostrud
+            exercitation
+            aliquip duis aute irure dolorin
+            reprehenderits vol dolore fugiat nulla pariatur excepteur sint occaecat cupidatat.
+        </p>
+
+        <!--<svg class="w-24" height="40" viewBox="0 0 110 10" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 5 Q 5 0, 10 5 T 20 5 T 30 5 T 40 5 T 50 5 T 60 5 T 70 5 T 80 5 T 90 5 T 100 5 Q 105 0, 110 5"
+                  stroke="#1E3A8A" stroke-width="2" fill="transparent"/>
+        </svg>-->
+
+
+    </div>
+
+</div>
+
+<!-- Offers -->
+<div class="w-screen bg-white pb-16">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-4 offerselem">
+        <!-- Element 1 -->
+        <div class="bg-white rounded-lg shadow-lg p-4 z-50">
+            <img src="style/images/y001.jpg" alt="Image 1" class="w-full h-32 object-cover rounded-md mb-4">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="text-lg font-bold">Title 1</h3>
+                <span class="text-lg font-semibold text-gray-800">$29.99</span>
+            </div>
+            <hr class="border-t border-gray-300 mb-2">
+            <p class="text-gray-600 text-sm">This is a small description for the first item.</p>
+        </div>
+
+        <!-- Element 2 -->
+        <div class="bg-white rounded-lg shadow-lg p-4 z-50">
+            <img src="style/images/y002.jpg" alt="Image 2" class="w-full h-32 object-cover rounded-md mb-4">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="text-lg font-bold">Title 2</h3>
+                <span class="text-lg font-semibold text-gray-800">$39.99</span>
+            </div>
+            <hr class="border-t border-gray-300 mb-2">
+            <p class="text-gray-600 text-sm">This is a small description for the second item.</p>
+        </div>
+
+        <!-- Element 3 -->
+        <div class="bg-white rounded-lg shadow-lg p-4 z-50">
+            <img src="style/images/y003.jpg" alt="Image 3" class="w-full h-32 object-cover rounded-md mb-4">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="text-lg font-bold">Title 3</h3>
+                <span class="text-lg font-semibold text-gray-800">$49.99</span>
+            </div>
+            <hr class="border-t border-gray-300 mb-2">
+            <p class="text-gray-600 text-sm">This is a small description for the third item.</p>
+        </div>
+
+        <!-- Element 4 -->
+        <div class="bg-white rounded-lg shadow-lg p-4 z-50">
+            <img src="style/images/y004.jpg" alt="Image 4" class="w-full h-32 object-cover rounded-md mb-4">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="text-lg font-bold">Title 4</h3>
+                <span class="text-lg font-semibold text-gray-800">$59.99</span>
+            </div>
+            <hr class="border-t border-gray-300 mb-2">
+            <p class="text-gray-600 text-sm">This is a small description for the fourth item.</p>
+        </div>
+
+        <!-- Element 5 -->
+        <div class="bg-white rounded-lg shadow-lg p-4 z-50">
+            <img src="style/images/y005.jpg" alt="Image 3" class="w-full h-32 object-cover rounded-md mb-4">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="text-lg font-bold">Title 3</h3>
+                <span class="text-lg font-semibold text-gray-800">$49.99</span>
+            </div>
+            <hr class="border-t border-gray-300 mb-2">
+            <p class="text-gray-600 text-sm">This is a small description for the third item.</p>
+        </div>
+
+        <!-- Element 6 -->
+        <div class="bg-white rounded-lg shadow-lg p-4 z-50">
+            <img src="style/images/y006.jpg" alt="Image 4" class="w-full h-32 object-cover rounded-md mb-4">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="text-lg font-bold">Title 4</h3>
+                <span class="text-lg font-semibold text-gray-800">$59.99</span>
+            </div>
+            <hr class="border-t border-gray-300 mb-2">
+            <p class="text-gray-600 text-sm">This is a small description for the fourth item.</p>
+        </div>
+        <!-- Element 7 -->
+        <div class="bg-white rounded-lg shadow-lg p-4 z-50">
+            <img src="style/images/y007.jpg" alt="Image 3" class="w-full h-32 object-cover rounded-md mb-4">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="text-lg font-bold">Title 3</h3>
+                <span class="text-lg font-semibold text-gray-800">$49.99</span>
+            </div>
+            <hr class="border-t border-gray-300 mb-2">
+            <p class="text-gray-600 text-sm">This is a small description for the third item.</p>
+        </div>
+
+        <!-- Element 8 -->
+        <div class="bg-white rounded-lg shadow-lg p-4 z-50">
+            <img src="style/images/y008.jpg" alt="Image 4" class="w-full h-32 object-cover rounded-md mb-4">
+            <div class="flex justify-between items-center mb-2">
+                <h3 class="text-lg font-bold">Title 4</h3>
+                <span class="text-lg font-semibold text-gray-800">$59.99</span>
+            </div>
+            <hr class="border-t border-gray-300 mb-2">
+            <p class="text-gray-600 text-sm">This is a small description for the fourth item.</p>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Advertising -->
+<div class="h-56 w-screen md:py-16">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-start bg-white p-4 md:rounded-lg md:shadow-lg md:border md:border-gray-200">
+        <!-- Image -->
+        <div class="flex-shrink-0 w-full md:w-60 h-60 mr-4 mb-4 md:mb-0">
+            <img src="style/images/y001.jpg" alt="Advertisement Image" class="w-full h-full object-cover rounded-lg">
+        </div>
+
+        <!-- Content -->
+        <div class="flex-1">
+            <!-- Title -->
+            <h2 class="text-xl font-bold mb-2 text-black text-center md:text-left">Deal Of The Week</h2>
+
+            <!-- Subtitle and Description -->
+            <p class="text-lg font-semibold text-gray-700 mb-1 text-center md:text-left">DayDream Boat</p><span class="text-gray-400">Rent For $800 / HRS</span>
+            <p class="text-gray-600 mb-2">Builder /Model: French Waves | Type/Year: House Boat 2019 |
+                Length: 105 FT 32 M Charter Guests: 200 | Crew Members: 6</p>
+
+            <!-- Underline -->
+            <hr class="border-t border-gray-300 mb-2">
+
+            <!-- Phone Number -->
+            <p class="text-lg font-medium text-blue-600">Call Us: (123) 456-7890</p>
+        </div>
+    </div>
+</div>
+
+<!-- section-progress -->
+<div class="relative w-screen pt-16 pb-6 mt-64 md:mt-32 flex justify-center">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-16">
+        <!-- Element 1 -->
+        <div class="bg-white flex flex-col items-center justify-center h-72 w-72 md:h-60 md:w-60 rounded-lg shadow-lg p-4 bg-yellow-300">
+            <img src="style/images/cruise.png" alt="Icon 1" class="w-24 h-24 mb-2">
+            <h3 class="text-lg font-bold">15</h3>
+            <p class="text-sm text-gray-600">Nombre d'agences</p>
+        </div>
+
+        <!-- Element 2 (with margin at the top) -->
+        <div class="bg-white flex flex-col items-center justify-center h-72 w-72 md:h-60 md:w-60 rounded-lg shadow-lg p-4 md:mt-12 bg-green-400">
+            <img src="style/images/countries.png" alt="Icon 2" class="w-24 h-24 mb-2">
+            <h3 class="text-lg font-bold">Title 2</h3>
+            <p class="text-sm text-gray-600">Nombre de destinations</p>
+        </div>
+
+        <!-- Element 3 -->
+        <div class="bg-white flex flex-col items-center justify-center h-72 w-72 md:h-60 md:w-60 rounded-lg shadow-lg p-4 bg-blue-400">
+            <img src="icon3-url.svg" alt="Icon 3" class="w-24 h-24 mb-2">
+            <h3 class="text-lg font-bold">Title 3</h3>
+            <p class="text-sm text-gray-600">Travel Destinations Offered</p>
+        </div>
+
+        <!-- Element 4 (with margin at the top) -->
+        <div class="bg-white flex flex-col items-center justify-center h-72 w-72 md:h-60 md:w-60 rounded-lg shadow-lg p-4 md:mt-12 bg-purple-400">
+            <img src="icon4-url.svg" alt="Icon 4" class="w-24 h-24 mb-2">
+            <h3 class="text-lg font-bold">Title 4</h3>
+            <p class="text-sm text-gray-600">Travel Destinations Offered</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- Premium Services -->
+<div class="relative overflow-hidden h-auto md:h-96 w-screen">
+
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row  flex items-center">
+        <!-- First Section: Title, Description, Button -->
+        <div class="w-full md:w-1/3 p-8 flex flex-col items-center">
+            <h2 class="text-4xl font-bold mb-4 text-gray-800 text-center md:text-left">Premium Boat Rental Services</h2>
+            <p class="text-gray-700 mb-6 text-sm text-center md:text-left">Eorem ipsum dolor amet consectetur sed adipisicing elit sed eiusmod
+                tempor et dolore magna aliqua minim veniam, quis nostrud exercitation aliquip ex ea
+                consequat duis aute irure dolorin.</p>
+            <button class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700">Click Here</button>
+        </div>
+
+        <!-- Second Section: carouselmultiple -->
+        <div class="carouselmultiple w-full md:w-2/3 mt-4 md:mt-0 h-96">
+            <div class="carouselmultiple-inner flex justify-around">
+                <!-- Slide 1 -->
+                <div class="carouselmultiple-item relative p-2.5">
+                    <img src="style/images/b01.jpg" alt="Slide 1">
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carouselmultiple-item relative md:p-4">
+                    <img src="style/images/b02.jpg" alt="Slide 2">
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="carouselmultiple-item relative md:p-4">
+                    <img src="style/images/b01.jpg" alt="Slide 3">
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="carouselmultiple-item relative md:p-4">
+                    <img src="style/images/b02.jpg" alt="Slide 4">
+                </div>
+                <!-- Slide 5 -->
+                <div class="carouselmultiple-item relative md:p-4">
+                    <img src="style/images/b01.jpg" alt="Slide 5">
+                </div>
+            </div>
+            <!-- Next and Previous buttons -->
+            <div class="carouselmultiple-control carouselmultiple-control-prev">
+                <i class="bi bi-chevron-left"></i>
+            </div>
+            <div class="carouselmultiple-control carouselmultiple-control-next">
+                <i class="bi bi-chevron-right"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Video -->
+<div class="relative overflow-hidden bg-green-200 w-screen my-16">
+    <div class="absolute parallelogram2 h-6 bg-white w-full" style="left:10%; top:0; z-index: 10;"></div>
+
+    <div class="bg-cover bg-center h-96 flex flex-col md:flex-row justify-around items-center px-10"
+         style="background-image: url('style/images/b02.jpg');">
+
+        <!-- Left Side: Title and Description -->
+        <div class="text-left md:w-3/5 text-white pt-8 text-center md:text-left">
+            <h2 class="text-4xl font-bold mb-4">Fleet of Luxury Boats</h2>
+            <p class="text-base">Dolore magna aliqua enim ad minim veniam, quis nostrud exercitation aliquip
+                duis aute
+                irure dolorin reprehenderits vol dolore fugiat nulla pariatur excepteur sint occaecat
+                cupidatat.</p>
+        </div>
+
+        <!-- Right Side: Play Button -->
+        <div>
+            <button id="playButton"
+                    class="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none"
+                     viewBox="0 0 24 24"
+                     stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M14.752 11.168l-4.752 3.168v-6.336z"/>
+                </svg>
+            </button>
+        </div>
+
+    </div>
+
+
+    <!-- Video Popup (Hidden by default) -->
+    <div id="videoPopup"
+         class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+        <div class="relative bg-white p-4 rounded-lg max-w-3xl w-full">
+            <button id="closePopup" class="absolute top-0 right-0 mt-2 mr-2 text-gray-500 hover:text-black">
+                &#10005;
+            </button>
+            <video controls class="w-full">
+                <source src="your-video-file.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+</div>
+
+
+<!-- Gallery -->
+<div class="flex flex-col items-center">
+    <h3 class="text-4xl font-bold text-gray-800 py-4">Picture Gallery</h3>
+    <p class="md:w-1/3 text-sm text-gray-600 text-center">
+        Dolore magna aliqua enim ad minim veniam, quis nostrud exercitation aliquip duis aute irure dolorin
+        reprehenderits vol dolore fugiat nulla pariatur excepteur sint occaecat cupidatat.
+    </p>
+</div>
+<div class="containerGallery w-screen h-1/2 flex justify-center py-16">
+
+    <div class="empl1 p-4">
+        <img src="https://picsum.photos/id/815/400/400" alt="Image 1">
+    </div>
+    <div class="empl2 p-4">
+        <img src="https://picsum.photos/id/816/400/400" alt="Image 2">
+    </div>
+    <div class="empl3 p-4">
+        <img src="https://picsum.photos/id/817/400/400" alt="Image 3">
+    </div>
+    <div class="empl4 p-4">
+        <img src="https://picsum.photos/id/818/400/400" alt="Image 4">
+    </div>
+    <div class="empl5 p-4">
+        <img src="https://picsum.photos/id/819/400/400" alt="Image 5">
+    </div>
+    <div class="empl6 p-4">
+        <img src="https://picsum.photos/id/820/400/400" alt="Image 6">
+    </div>
+    <div class="empl7 p-4">
+        <img src="https://picsum.photos/id/821/400/400" alt="Image 7">
+    </div>
+    <div class="empl8 p-4">
+        <img src="https://picsum.photos/id/822/400/400" alt="Image 8">
+    </div>
+</div>
+
+<!-- Contact form -->
+<div class="w-screen pt-8">
+    <div class="w-full p-4 md:p-16 flex justify-center" style="background-image: url('style/images/b02.jpg');">
+        <div class="w-full md:w-1/3">
+            <form id="contact-form" class="bg-white w-full p-4 md:p-8 rounded-md">
+                <div class="mb-8 text-center text-4xl font-semibold text-gray-800">Nous contacter</div>
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                    <input type="email" id="email" name="email"
+                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500
+                           sm:text-sm text-gray-600"
+                           required>
+                </div>
+                <div class="mb-4">
+                    <label for="subject" class="block text-sm font-medium text-gray-700">Sujet</label>
+                    <input id="subject" name="subject"
+                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500
+                           sm:text-sm text-gray-600"
+                           required>
+                </div>
+                <div class="mb-4">
+                    <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                    <textarea id="message" name="message" rows="4"
+                              class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500
+                              sm:text-sm text-gray-600"
+                              required></textarea>
+                </div>
+                <div class="flex justify-center">
+                    <input type="submit" id="submit-button"
+                           class="text-white font-semibold py-4 px-8 rounded-lg inline-block transition duration-300 custom-btn"
+                           value="Envoyer">
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<!-- Articles -->
+<div class="pt-16 pb-8 md:py-16">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row md:rounded-lg md:shadow-lg bg-white">
+    <!-- Preview Section (2/3) -->
+    <div class="w-full md:w-2/3 px-6 py-8 preview">
+        <img src="https://via.placeholder.com/800x400" alt="Preview Image" class="rounded-lg mb-6">
+        <div class="text-gray-400 text-sm mb-2" id="preview-date"></div>
+        <div class="text-2xl font-bold mb-4 text-gray-800" id="preview-title"></div>
+        <div class="text-gray-400 mb-6" id="preview-description"></div>
+        <button class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded" id="read-more">Read More</button>
+    </div>
+
+    <!-- Articles List (1/3) -->
+    <div class="md:w-1/3 p-8">
+        <div class="space-y-5">
+            <!-- Article Item -->
+            <div class="article-item bg-gray-800 px-4 py-4 rounded-lg shadow-lg cursor-pointer flex" data-title="First Article"
+                data-date="2024-08-16" data-description="This is the first article description."
+                data-image="https://pro-theme.com/html/nevica/assets/img/summer-relax-TUXEYC7.jpg">
+                <img src="https://pro-theme.com/html/nevica/assets/img/summer-relax-TUXEYC7.jpg" alt="Article Image" class="rounded-lg" style="width: 100px; height: 100px; object-fit: cover;">
+                <div class="p-4">
+                    <div class="text-gray-400 text-sm">2024-08-16</div>
+                    <div class="text-lg font-bold">First Article</div>
+                    <div class="text-gray-500 text-sm">Source: Example.com</div>
+                </div>
+            </div>
+            <!-- Additional Articles -->
+            <div class="article-item bg-gray-800 px-4 py-4 rounded-lg shadow-lg cursor-pointer flex" data-title="Second Article"
+                data-date="2024-08-15" data-description="This is the second article description."
+                data-image="https://pro-theme.com/html/nevica/assets/img/bg324324.jpg">
+                <img src="https://pro-theme.com/html/nevica/assets/img/bg324324.jpg" alt="Article Image" class="rounded-lg" style="width: 100px; height: 100px; object-fit: cover;">
+                <div class="p-4">
+                    <div class="text-gray-400 text-sm">2024-08-15</div>
+                    <div class="text-lg font-bold">Second Article</div>
+                    <div class="text-gray-500 text-sm">Source: Example.com</div>
+                </div>
+            </div>
+            <div class="article-item bg-gray-800 px-4 py-4 rounded-lg shadow-lg cursor-pointer flex" data-title="Third Article"
+                data-date="2024-08-14" data-description="This is the third article description."
+                data-image="https://pro-theme.com/html/nevica/assets/img/bg43534.jpg">
+                <img src="https://pro-theme.com/html/nevica/assets/img/bg43534.jpg" alt="Article Image" class="rounded-lg" style="width: 100px; height: 100px; object-fit: cover;">
+                <div class="p-4">
+                    <div class="text-gray-400 text-sm">2024-08-14</div>
+                    <div class="text-lg font-bold">Third Article</div>
+                    <div class="text-gray-500 text-sm">Source: Example.com</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<hr/>
+
+<div class="max-w-6xl mx-auto px-6 py-6 md:pb-16 md:pt-8">
+    <!-- Partners Section -->
+    <div class="p-6">
+        <h2 class="text-2xl font-bold text-gray-800 mb-12 text-center">Our Partners</h2>
+        <div class="flex flex-wrap justify-around gap-6">
+            <!-- Partner 1 -->
+            <div class="partner-logo">
+                <img src="https://via.placeholder.com/100" class="rounded-lg md:rounded-full" alt="Partner 1">
+            </div>
+            <!-- Partner 2 -->
+            <div class="partner-logo">
+                <img src="https://via.placeholder.com/100" class="rounded-lg md:rounded-full" alt="Partner 2">
+            </div>
+            <!-- Partner 3 -->
+            <div class="partner-logo">
+                <img src="https://via.placeholder.com/100" class="rounded-lg md:rounded-full" alt="Partner 3">
+            </div>
+            <!-- Partner 4 -->
+            <div class="partner-logo">
+                <img src="https://via.placeholder.com/100" class="rounded-lg md:rounded-full" alt="Partner 4">
+            </div>
+            <!-- Partner 5 -->
+            <div class="partner-logo">
+                <img src="https://via.placeholder.com/100" class="rounded-lg md:rounded-full" alt="Partner 5">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="text-gray-800 py-8 primary_col">
+    <!-- First Row -->
+    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- First Element: Two Logos -->
+        <div class="flex items-center space-y-4">
+            <img src="style/images/Asset%201@4x.png" class="md:h-16" alt="Logo 1">
+        </div>
+        <!-- Second Element: Contact Us -->
+        <div>
+            <h3 class="text-lg font-semibold mb-2">Contact Us</h3>
+            <div class="py-2">
+                <!-- Contact Information -->
+                <div class="mb-2">
+                    <i class="bi bi-telephone inline-block w-8 align-middle"></i>
+                    <p class="inline-block align-middle ml-2">+1234567890</p>
+                </div>
+                <div class="mb-2">
+                    <i class="bi bi-envelope-at inline-block w-8 align-middle"></i>
+                    <p class="inline-block align-middle ml-2">contact@zaatchavoyages.com</p>
+                </div>
+                <div>
+                    <i class="bi bi-geo-alt inline-block w-8 align-middle"></i>
+                    <p class="inline-block align-middle ml-2">coop les communeaux </br>Villa N 40 Kouba Alger, Kouba,
+                        Algeria</p>
+                </div>
+            </div>
+        </div>
+        <!-- Third Element: Quick Links -->
+        <div>
+            <h3 class="text-lg font-semibold mb-2">Horaire</h3>
+            Nos horraires pour l'été sont:
+            <div class="grid grid-cols-2">
+                <p>du samedi au jeudi:</p>
+                <p>09:00 - 17:00</p>
+
+                <p>Vendredi:</p>
+                <p>Fermé</p>
+            </div>
+
+        </div>
+    </div>
+    <!-- Second Row -->
+    <div class="container mx-auto px-4 mt-8 flex flex-col md:flex-row justify-between items-center border-t border-gray-700 pt-4">
+        <p class="text-gray-900">© 2024 All rights reserved.</p>
+        <div class="flex space-x-4 mt-4 md:mt-0">
+
+            <a href="#" class="text-gray-900 hover:text-white mx-2">
+                <i class="bi bi-facebook"></i>
+            </a>
+            <a href="#" class="text-gray-900 hover:text-white mx-2">
+                <i class="bi bi-instagram"></i>
+            </a>
+            <a href="#" class="text-gray-900 hover:text-white mx-2">
+                <i class="bi bi-linkedin"></i>
+            </a>
+
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+
+    $(document).ready(function () {
+        // Smooth scrolling when clicking on menu links
+        $('.nav-link').on('click', function (event) {
+            event.preventDefault();
+            targetId = $(this).attr('href');
+            targetOffset = $(targetId).offset().top;
+
+            $('html, body').animate({
+                scrollTop: targetOffset
+            }, 800); // Adjust the speed of the scroll animation (in milliseconds)
+        });
+
+        // Toggle responsive menu
+        $('#menu-toggle').on('click', function () {
+            $('#menu').toggleClass('hidden');
+        });
+    });
+
+    $(document).ready(function () {
+        $menu = $("#menu");
+        $menuinfo = $("#menu-info");
+        $('#menu-toggle').on('click', function () {
+            $menu.toggleClass('open');
+        });
+        $('#menu-toggle-sub').on('click', function () {
+            $menuinfo.toggleClass('open');
+        });
+
+        // Close menu when clicking outside of it
+        $(document).mouseup(function (e) {
+            var menu = $menu;
+            if (!menu.is(e.target) && menu.has(e.target).length === 0 && $menu.hasClass('open')) {
+                menu.removeClass('open');
+            }
+        });
+        $(document).mouseup(function (e) {
+            var menu = $menuinfo;
+            if (!menu.is(e.target) && menu.has(e.target).length === 0 && $menuinfo.hasClass('open')) {
+                menu.removeClass('open');
+            }
+        });
+
+        $('.carousel-item-gallery').click(function () {
+            var imgSrc = $(this).find('img').attr('src');
+            $('#popupImage').attr('src', imgSrc);
+            $('#popup').fadeIn();
+        });
+
+        $('#popup').click(function () {
+            $(this).fadeOut();
+        });
+
+        //$('.content-section').first().removeClass('hidden');
+        //$('.section-header').first().addClass('text-custom border-custom');
+
+        // Handle click event
+        $('.section-header').click(function () {
+            // Remove active class from all headers
+            $('.section-header').removeClass('text-custom border-custom').addClass('border-transparent');
+
+            // Add active class to the clicked header
+            $(this).removeClass('border-transparent').addClass('text-custom border-custom');
+
+            // Hide all sections
+            $('.content-section').addClass('hidden');
+
+            // Show the target section
+            $($(this).data('target')).removeClass('hidden');
+        });
+
+    });
+
+
+    $(document).ready(function () {
+        var currentSlide = 0;
+        var totalSlides = $('.carousel-item').length;
+        var slideWidth = $('.carousel-item').outerWidth();
+        var animationInProgress = false;
+        var slideInterval;
+
+        // Clone the first slide and append it to the end
+        $('.carousel-inner').append($('.carousel-item').first().clone());
+
+        function showSlide(index) {
+            var translateX = '-' + (index * slideWidth) + 'px';
+            $('.carousel-inner').css({
+                transform: 'translateX(' + translateX + ')'
+            });
+
+            // Hide all text elements and buttons initially
+            $('.carousel-item p, .carousel-item h1, .carousel-item button').css('opacity', '0');
+
+            // Remove animation classes
+            $('.carousel-item p, .carousel-item h1, .carousel-item button').removeClass('animate-slideRight animate-slideUp animate-slideLeft');
+
+            // Force reflow to ensure CSS classes are updated before adding animation class
+            void $('.carousel-item').eq(index % totalSlides)[0].offsetWidth;
+
+            // Add animation to <p>, <h1>, and button in the current slide with delay
+            setTimeout(function () {
+                $('.carousel-item').eq(index % totalSlides).find('p').css('opacity', '1').addClass('animate-slideRight');
+                $('.carousel-item').eq(index % totalSlides).find('h1').css('opacity', '1').addClass('animate-slideUp');
+                $('.carousel-item').eq(index % totalSlides).find('button').css('opacity', '1').addClass('animate-slideLeft');
+            }, 2000); // 2-second delay before executing the animation
+        }
+
+        // Initial slide display
+        showSlide(currentSlide);
+
+        function nextSlide() {
+            if (!animationInProgress) {
+                animationInProgress = true;
+                currentSlide++;
+                showSlide(currentSlide);
+
+                if (currentSlide === totalSlides) {
+                    setTimeout(function () {
+                        $('.carousel-inner').css({
+                            transition: 'none',
+                            transform: 'translateX(0)'
+                        });
+                        currentSlide = 0;
+                        setTimeout(function () {
+                            $('.carousel-inner').css('transition', 'transform 1s ease-out');
+                            animationInProgress = false;
+                            showSlide(currentSlide); // Ensure the first slide shows animation on restart
+                        }, 50); // Re-enable transition after a short delay
+                    }, 1000); // Wait for the slide transition to complete
+                } else {
+                    setTimeout(function () {
+                        animationInProgress = false;
+                    }, 1000); // Ensure animationInProgress is reset after transition
+                }
+            }
+        }
+
+        function prevSlide() {
+            if (!animationInProgress) {
+                animationInProgress = true;
+                currentSlide--;
+                if (currentSlide < 0) {
+                    $('.carousel-inner').css({
+                        transition: 'none',
+                        transform: 'translateX(-' + (totalSlides * slideWidth) + 'px)'
+                    });
+                    currentSlide = totalSlides - 1;
+                    setTimeout(function () {
+                        $('.carousel-inner').css('transition', 'transform 1s ease-out');
+                        showSlide(currentSlide);
+                        animationInProgress = false;
+                    }, 50); // Re-enable transition after a short delay
+                } else {
+                    showSlide(currentSlide);
+                    setTimeout(function () {
+                        animationInProgress = false;
+                    }, 1000); // Ensure animationInProgress is reset after transition
+                }
+            }
+        }
+
+        // Clear existing interval to avoid conflicts
+        if (slideInterval) {
+            clearInterval(slideInterval);
+        }
+
+        // Automatic slide change every 10 seconds
+        slideInterval = setInterval(nextSlide, 10000);
+
+        // Event listeners for arrow buttons
+        $('.carousel-control-next').click(function () {
+            nextSlide();
+        });
+
+        $('.carousel-control-prev').click(function () {
+            prevSlide();
+        });
+    });
+
+    $(document).ready(function () {
+        // Show the video popup when the play button is clicked
+        $('#playButton').on('click', function () {
+            $('#videoPopup').removeClass('hidden');
+        });
+
+        // Hide the video popup when the close button is clicked
+        $('#closePopup').on('click', function () {
+            $('#videoPopup').addClass('hidden');
+        });
+    });
+
+    /* the multiple carousel slider */
+    $(document).ready(function () {
+        var totalSlides = $('.carouselmultiple-item').length;
+        var slideWidth = $('.carouselmultiple-item').outerWidth();
+        var animationInProgress = false;
+
+        function showSlide(index) {
+            var translateX = '-' + (index * slideWidth) + 'px';
+            $('.carouselmultiple-inner').css({
+                transform: 'translateX(' + translateX + ')',
+                transition: 'transform 1s ease-out'
+            });
+        }
+
+        function nextSlide() {
+            if (!animationInProgress) {
+                animationInProgress = true;
+                var $firstSlide = $('.carouselmultiple-item').first();
+                var $carouselmultipleInner = $('.carouselmultiple-inner');
+
+                // Move to next slide
+                showSlide(1);
+
+                setTimeout(function () {
+                    // After transition, move first slide to the end and reset position
+                    $carouselmultipleInner.append($firstSlide);
+                    $carouselmultipleInner.css({
+                        transform: 'translateX(0)',
+                        transition: 'none'
+                    });
+
+                    setTimeout(function () {
+                        $carouselmultipleInner.css('transition', 'transform 1s ease-out');
+                        animationInProgress = false;
+                    }, 50);
+                }, 1000); // 1000ms is the transition duration, adjust if necessary
+            }
+        }
+
+        function prevSlide() {
+            if (!animationInProgress) {
+                animationInProgress = true;
+                var $lastSlide = $('.carouselmultiple-item').last();
+                var $carouselmultipleInner = $('.carouselmultiple-inner');
+
+                // Move the last slide to the start and jump to it without transition
+                $carouselmultipleInner.prepend($lastSlide);
+                $carouselmultipleInner.css({
+                    transform: 'translateX(-' + slideWidth + 'px)',
+                    transition: 'none'
+                });
+
+                setTimeout(function () {
+                    // Then slide to the first visible slide with transition
+                    showSlide(0);
+
+                    setTimeout(function () {
+                        animationInProgress = false;
+                    }, 1000); // 1000ms is the transition duration, adjust if necessary
+                }, 50);
+            }
+        }
+
+        // Event listeners for arrow buttons
+        $('.carouselmultiple-control-next').click(function () {
+            nextSlide();
+        });
+
+        $('.carouselmultiple-control-prev').click(function () {
+            prevSlide();
+        });
+
+        // Automatic slide change every 10 seconds
+        setInterval(nextSlide, 2000);
+    });
+
+    /* send form */
+    $(document).ready(function () {
+        $('#contact-form').submit(function (event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            var formData = {
+                email: $('#email').val(),
+                sujet: $('#subject').val(),
+                msg: $('#message').val()
+            };
+
+            $.ajax({
+                type: 'POST',
+                url: 'process_contact.php', // Update with the actual path to your PHP script
+                data: formData,
+                dataType: 'json',
+                encode: true,
+                success: function (response) {
+                    alert('Message has been sent');
+                },
+                error: function (response) {
+                    alert('Message could not be sent. Error: ' + response.responseText);
+                }
+            });
+        });
+    });
+
+    /* Articles */
+    $(document).ready(function () {
+        // Function to update the preview section
+        function updatePreview(article) {
+            var title = article.data('title');
+            var date = article.data('date');
+            var description = article.data('description');
+            var image = article.data('image');
+
+            $('#preview-title').text(title);
+            $('#preview-date').text('Date: ' + date);
+            $('#preview-description').text(description);
+            $('.preview img').attr('src', image);
+            $('#read-more').attr('href', '#'); // Replace with the actual link
+        }
+
+        // Trigger click event on the first article item to set it as default
+        var firstArticle = $('.article-item').first();
+        updatePreview(firstArticle);
+
+        // Handle article click events
+        $('.article-item').click(function () {
+            updatePreview($(this));
+        });
+    });
+    $(document).ready(function () {
+        $('#search-btn, #responsive-search-btn').click(function () {
+            // Toggle the display of the normal mode form fields on search button click
+            $('.form-popup').toggleClass('hidden');
+        });
+    });
+</script>
+
+</body>
+</html>
